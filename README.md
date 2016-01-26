@@ -15,4 +15,4 @@
 
 `webpack --optimize-minimize`
 
-[1]: fwon.cn/app
+[1]: https://fwon.cn/app
