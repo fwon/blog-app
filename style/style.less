@@ -9,15 +9,26 @@ body {
 #root, #root>div {
     height: 100%;
 }
+
+.page-title {
+    height: 30px;
+    font-size: 40px;
+    text-align: right;
+    padding: 27px 30px 27px;
+    border-bottom: 1px solid #dedede;
+    box-shadow: 0px 3px 5px #888888;
+    background-color: antiquewhite;
+}
+
 .slider {
     position: absolute;
-    left: -400px;
+    transform: translateX(-400px);
     width: 400px;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    transition: left .2s ease-in;
+    transition: transform .2s ease-in;
     &.slideOut {
-        left: 0;
+        transform: translateX(0);
     }
     ul {
         padding: 20px 40px 0 40px;
@@ -50,7 +61,7 @@ section {
             border-radius: 50%;
             margin-top: 100px;
             padding: 8px;
-            border: 4px solid #dedede; /*no*/
+            border: 1px solid #dedede; /*no*/
         }
         p {
             font-size: 40px;
@@ -65,10 +76,9 @@ section {
     .icon-menu {
         position: absolute;
         left: 20px;
-        top: 20px;
+        top: 12px;
     }
     .content {
-        text-align: center;
         a {
             display: inline-block;
             margin-right: 60px;
@@ -90,21 +100,26 @@ section {
             position: absolute;
             bottom: 10px;
             width: 100%;
+            text-align: center;
         }
     }
     .archives {
-        h1 {
-            font-size: 40px;
-            text-align: right;
-            padding: 27px 30px 20px;
-            border-bottom: 1px solid #dedede;
+        .markdown-body {
+            padding: 10px 30px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            top: 90px;
+            left: 0;
+            box-sizing: border-box;
         }
         ul {
             margin-top: 50px;
             li {
                 list-style-position: inside;
                 list-style: none;
-                width: 100%;
                 padding: 20px 0 20px 70px;
                 font-size: 30px;
                 vertical-align: middle;
@@ -117,12 +132,6 @@ section {
         }
     }
     .aboutme {
-        h1 {
-            font-size: 40px;
-            text-align: right;
-            padding: 27px 30px 20px;
-            border-bottom: 1px solid #dedede;
-        }
         .detail {
             margin-top: 50px;
             p {
@@ -135,7 +144,5 @@ section {
                 color: #d5000d;
             }
         }
-        
     }
-
 }

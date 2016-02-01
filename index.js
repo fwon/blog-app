@@ -11,6 +11,8 @@ import App from './containers/App'
 import Home from './containers/Home'
 import About from './containers/About'
 import Archives from './containers/Archives'
+import ArchivesHome from './containers/ArchivesHome'
+import ArchivePage from './components/ArchivePage'
 
 const store = configureStore()
 reduxRouterMiddleware.listenForReplays(store)
@@ -21,7 +23,10 @@ render(
             <Route path="/" component={App}>
                 <IndexRoute component={Home}/>
                 <Route path="about" component={About}/>
-                <Route path="archives" component={Archives}/>
+                <Route path="archives" component={Archives}>
+                    <IndexRoute component={ArchivesHome}/>
+                    <Route path=":name" component={ArchivePage}/>
+                </Route>
             </Route>
         </Router>
     </Provider>,

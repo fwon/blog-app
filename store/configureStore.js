@@ -8,7 +8,7 @@ export const history = createHistory()
 export const reduxRouterMiddleware = syncHistory(history)
 const createStoreWithMiddleware = applyMiddleware(
   reduxRouterMiddleware,
-  createLogger()
+  // createLogger()
 )(createStore)
 
 export default function configureStore(initialState) {

@@ -10,7 +10,7 @@ class Home extends Component {
             <div>
                 <Header/>
                 <div className="home">
-                    <p style={{marginTop:'20px'}}>
+                    <p style={{marginTop:'20px',textAlign:'center'}}>
                         power by redux
                     </p>
                     <p className="footer">copyright@fwon</p>
