@@ -8,7 +8,7 @@ class Archives extends Component {
     }
     render() {
         return (
-            <div className="archives">
+            <div className="p-archives">
                 <TitleBar title="文章"/>
                 {this.props.children}
             </div>

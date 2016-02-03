@@ -1,40 +1,61 @@
 import fetch from 'isomorphic-fetch'
 import marked from 'marked'
 import highlight from 'highlight.js'
-export const CLICK_MENU = 'CLICK_MENU'
+export const CLICK_TITLEBTN = 'CLICK_TITLEBTN'
 export const RECEIVE_ARTICLE = 'RECEIVE_ARTICLE'
-export const REQUEST_ARTICEL = 'REQUEST_ARTICEL'
+export const REQUEST_ARTICLE = 'REQUEST_ARTICLE'
 
 marked.setOptions({
     highlight: code => highlight.highlightAuto(code).value
 })
 
-export function clickMenu(slideState) {
+export function clickTitleBtn(slideState, isBack) {
     return {
-        type: CLICK_MENU,
-        slideState
+        type: CLICK_TITLEBTN,
+        slideState,
+        isBack
     }
 }
 
 export function requestArticle(articleName) {
     return {
-        type: REQUEST_ARTICEL,
+        type: REQUEST_ARTICLE,
         articleName
     }
 }
 
-export function receiveArticle(articleContent) {
+export function receiveArticle(articleName, articleContent) {
     return {
         type: RECEIVE_ARTICLE,
+        articleName,
         articleContent: marked(articleContent)
     }
 }
 
-export function fetchArticle(articleName) {
+function fetchArticle(articleName) {
     return dispatch => {
         dispatch(requestArticle(articleName))
         return fetch(`https://raw.githubusercontent.com/fwon/fwon.github.io/master/app/articles/${articleName}.md`)
             .then(response => response.text())
-            .then(content => dispatch(receiveArticle(content)))
+            .then(content => dispatch(receiveArticle(articleName, content)))
+    }
+}
+
+function shouldFetchArticle(state, articleName) {
+    console.log(state);
+    const article = state.article
+    console.log(articleName);
+    if (!article || !article[articleName]) {
+        console.log(true);
+        return true
+    }
+    return false
+}
+
+export function fetchArticleIfNeeded(articleName) {
+    return (dispatch, getState) => {
+        if (shouldFetchArticle(getState(), articleName)) {
+            return dispatch(fetchArticle(articleName))
+        }
     }
 }

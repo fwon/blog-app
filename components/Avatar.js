@@ -12,7 +12,7 @@ export default class Avatar extends Component {
             "transformOrigin": "130px 106px"
         }
         return (
-            <div className="header">
+            <div className="c-avatar">
                 <img src="/img/avatar.png"/>
                 <p>fwon</p>
                 <hr className="panel-cover"></hr>

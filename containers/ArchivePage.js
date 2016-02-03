@@ -1,6 +1,6 @@
 require ('../style/markdown.css')
 require ('../style/railscasts.css')
-import {fetchArticle} from '../actions'
+import {fetchArticleIfNeeded, clickTitleBtn} from '../actions'
 import {connect} from 'react-redux'
 import Loading from '../components/Loading'
 import React, {Component, PropTypes} from 'react'
@@ -13,23 +13,20 @@ class ArchivePage extends Component {
         this.pageContent = ''
     }
     componentWillMount() {
-        // To move to reducers as async loader
         let articleName = this.pageName
-        // console.log(articleName);
-        // this.pageContent = require(articleName)
-
         const {dispatch} = this.props
-        dispatch(fetchArticle(articleName))
+        dispatch(fetchArticleIfNeeded(articleName))
     }
     componentDidMount() {
-        console.log('didaa ' + this.pageName);
+        const {dispatch} = this.props
+        dispatch(clickTitleBtn(false, true))
     }
     render() {
         const {article} = this.props
         return (
             <div>
-                <Loading status={article.isFetching}/>
-                <div className="markdown-body" dangerouslySetInnerHTML={{__html: article.content}}>
+                <Loading/>
+                <div className="markdown-body" dangerouslySetInnerHTML={{__html: article[this.pageName]}}>
                 </div>
             </div>
         )

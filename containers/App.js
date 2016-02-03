@@ -13,7 +13,7 @@ class App extends Component {
             <div>
                 <Slider status={slideState}/>
                 <section className={slideState ? 'slideOut' : ''}>
-                    <TitleBtn status={slideState}/>
+                    <TitleBtn/>
                     {this.props.children}
                 </section>
             </div>
@@ -26,9 +26,9 @@ App.propTypes = {
 }
 
 function mapStateToProps(state) {
-    const {slideState} = state
+    const {titleBtnStatus} = state
     return {
-        slideState
+        slideState: titleBtnStatus.slideState
     }
 }
 

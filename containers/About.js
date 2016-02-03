@@ -7,7 +7,7 @@ class About extends Component {
     }
     render() {
         return (
-            <div className="aboutme">
+            <div className="p-aboutme">
                 <TitleBar title="关于我"/>
                 <div className="detail">
                     <p>我叫王丰，在互联网上使用过的 ID 包括 wonderfun，fwon 等。我白天主要是在公司写代码，晚上回家喜欢看剧看书。</p>

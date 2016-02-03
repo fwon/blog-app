@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import {clickMenu} from '../actions'
+import {clickTitleBtn} from '../actions'
 import { routeActions } from 'redux-simple-router'
 import {connect} from 'react-redux'
 
@@ -11,11 +11,11 @@ class Slider extends Component {
     clickLink(url) {
         const {dispatch} = this.props
         dispatch(routeActions.push(url))
-        dispatch(clickMenu(false)) // 关闭滑动
+        dispatch(clickTitleBtn(false)) // 关闭滑动
     }
     render() {
         const {status} = this.props
-        const classes = status ? 'slider slideOut' : 'slider'
+        const classes = status ? 'c-slider slideOut' : 'c-slider'
         return (
             <div className={classes}>
                 <ul>

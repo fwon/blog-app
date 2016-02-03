@@ -1,33 +1,39 @@
 import {combineReducers} from 'redux'
 import {routeReducer, UPDATE_LOCATION} from 'redux-simple-router'
 import {
-    CLICK_MENU,
+    CLICK_TITLEBTN,
     RECEIVE_ARTICLE,
     REQUEST_ARTICLE
 } from '../actions'
 
-function slideState(state=false, action) {
+function titleBtnStatus(state={
+    slideState: false,
+    isBack: false
+}, action) {
     switch(action.type) {
-        case CLICK_MENU:
-            return action.slideState
+        case CLICK_TITLEBTN:
+            return Object.assign({}, state, {
+                slideState: action.slideState,
+                isBack: action.isBack
+            })
         default:
             return state
     }
 }
 
 function article(state={
-    isFetching: true
+    isFetching: false
 }, action) {
     switch(action.type) {
         case REQUEST_ARTICLE:
             return Object.assign({}, state, {
                 isFetching: true,
-                content: ''
+                [action.articleName]: ''
             })
         case RECEIVE_ARTICLE:
             return Object.assign({}, state, {
                 isFetching: false,
-                content: action.articleContent
+                [action.articleName]: action.articleContent
             })
         default:
             return state
@@ -51,7 +57,7 @@ function update(state="update", action) {
 // }
 
 const rootReducer = combineReducers({
-    slideState,
+    titleBtnStatus,
     update,
     article,
     routing: routeReducer
