@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import Header from '../components/Header'
+import Avatar from '../components/Avatar'
 
 class Home extends Component {
     constructor(props) {
@@ -7,8 +7,8 @@ class Home extends Component {
     }
     render() {
         return (
-            <div>
-                <Header/>
+            <div className="home">
+                <Avatar/>
                 <div className="home">
                     <p style={{marginTop:'20px',textAlign:'center'}}>
                         power by redux

@@ -12,7 +12,7 @@ import Home from './containers/Home'
 import About from './containers/About'
 import Archives from './containers/Archives'
 import ArchivesHome from './containers/ArchivesHome'
-import ArchivePage from './components/ArchivePage'
+import ArchivePage from './containers/ArchivePage'
 
 const store = configureStore()
 reduxRouterMiddleware.listenForReplays(store)

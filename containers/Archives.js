@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react'
+import TitleBar from '../components/TitleBar'
 import {connect} from 'react-redux'
 
 class Archives extends Component {
@@ -8,7 +9,7 @@ class Archives extends Component {
     render() {
         return (
             <div className="archives">
-                <h1 className="page-title">文章</h1>
+                <TitleBar title="文章"/>
                 {this.props.children}
             </div>
         )
