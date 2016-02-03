@@ -15,4 +15,4 @@
 再运行
  `webpack --optimize-minimize`
  
- -[1]: http://fwon.cn/app/
+[1]: http://fwon.cn/app/
