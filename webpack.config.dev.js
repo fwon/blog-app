@@ -1,10 +1,11 @@
 var path = require('path')
 var webpack = require('webpack')
 var px2rem = require('postcss-px2rem')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
+    devtool: 'cheap-module-eval-source-map',
     entry: [
+        'webpack-hot-middleware/client',
         './index'
     ],
     output: {
@@ -14,8 +15,8 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin('app.css', {allChunks: true})
     ],
     module: {
         loaders: [
@@ -27,14 +28,9 @@ module.exports = {
                 exclude: /node_modules/,
                 include: __dirname
             },
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-            },
-            {
-                test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!less-loader")
-            }
+            { test: /\.css$/, loader: "style!css" },
+            { test: /\.less$/, loader: "style!css!postcss!less" },
+            // { test: /\.md$/, loader: "html!markdown-highlight?+breaks&-smartLists" },
         ]
     },
     postcss: function() {

@@ -16,7 +16,7 @@ class TitleBtn extends Component {
     onBack() {
         const {dispatch, slideState} = this.props
         history.back()
-        if (0 === this.pageRecord--) {
+        if (0 === --this.pageRecord) {
             dispatch(clickTitleBtn(slideState, false))
         }
     }

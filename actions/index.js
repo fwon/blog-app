@@ -42,9 +42,7 @@ function fetchArticle(articleName) {
 }
 
 function shouldFetchArticle(state, articleName) {
-    console.log(state);
     const article = state.article
-    console.log(articleName);
     if (!article || !article[articleName]) {
         console.log(true);
         return true
