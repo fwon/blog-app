@@ -4,9 +4,12 @@ var px2rem = require('postcss-px2rem')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-    entry: [
-        './index'
-    ],
+    entry: {
+        app: './index',
+        vendor: [
+            'react'
+        ]
+    },
     output: {
         path: path.join(__dirname), //文件发布路径
         filename: 'bundle.js',
@@ -15,7 +18,14 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin('app.css', {allChunks: true})
+        new ExtractTextPlugin('app.css', {allChunks: true}),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
     ],
     module: {
         loaders: [

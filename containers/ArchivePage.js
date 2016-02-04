@@ -1,5 +1,5 @@
-require ('../style/markdown.css')
-require ('../style/railscasts.css')
+import '../style/markdown.css'
+import '../style/railscasts.css'
 import {fetchArticleIfNeeded, clickTitleBtn} from '../actions'
 import {connect} from 'react-redux'
 import Loading from '../components/Loading'

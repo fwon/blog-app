@@ -2,7 +2,7 @@ import {createStore, applyMiddleware} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createHistory from 'history/lib/createHashHistory'
 import {syncHistory} from 'redux-simple-router'
-import createLogger from 'redux-logger'
+// import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
 
 export const history = createHistory()

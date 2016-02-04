@@ -55,6 +55,7 @@
     "postcss-loader": "^0.8.0",
     "postcss-px2rem": "^0.2.0",
     "react-transform-hmr": "^1.0.0",
+    "stats-webpack-plugin": "^0.3.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
