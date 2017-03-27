@@ -13,4 +13,4 @@
 
  `webpack`
  
-[1]: http://fwon.cn/app/
+[1]: http://fwon.github.io/app/
